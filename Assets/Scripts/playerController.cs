@@ -1,24 +1,29 @@
-using UnityEngine.EventSystems;
 using UnityEngine;
+using UnityEngine.AI;
+using UnityEngine.EventSystems;
 
-/* Controls the player. Here we choose our "focus" and where to move. */
+/* Controls the player. Here we chose our "focus" and where to move. */
 
 [RequireComponent(typeof(PlayerMotor))]
+
 public class PlayerController : MonoBehaviour
 {
+	public delegate void OnFocusChanged(Interacao newFocus);
+	public OnFocusChanged onFocusChangedCallback;
 
 	public Interacao focus;  // Our current focus: Item, Enemy etc.
 
-	public LayerMask movementMask;  // Filter out everything not walkable
+	public LayerMask movementMask;      // The ground
+	public LayerMask interactionMask;   // Everything we can interact with
 
-	Camera cam;         // Reference to our camera
-	PlayerMotor motor;  // Reference to our motor
+	PlayerMotor motor;      // Reference to our motor
+	Camera cam;             // Reference to our camera
 
 	// Get references
 	void Start()
 	{
-		cam = Camera.main;
 		motor = GetComponent<PlayerMotor>();
+		cam = Camera.main;
 	}
 
 	// Update is called once per frame
@@ -31,61 +36,57 @@ public class PlayerController : MonoBehaviour
 		// If we press left mouse
 		if (Input.GetMouseButtonDown(0))
 		{
-			// We create a ray
+			// Shoot out a ray
 			Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 
-			// If the ray hits
-			if (Physics.Raycast(ray, out hit, 100, movementMask))
+			// If we hit
+			if (Physics.Raycast(ray, out hit, movementMask))
 			{
-				motor.MoveToPoint(hit.point);   // Move to where we hit
-				RemoveFocus();
+				motor.MoveToPoint(hit.point);
+
+				SetFocus(null);
 			}
 		}
 
 		// If we press right mouse
 		if (Input.GetMouseButtonDown(1))
 		{
-			// We create a ray
+			// Shoot out a ray
 			Ray ray = cam.ScreenPointToRay(Input.mousePosition);
 			RaycastHit hit;
 
-			// If the ray hits
-			if (Physics.Raycast(ray, out hit, 100))
+			// If we hit
+			if (Physics.Raycast(ray, out hit, 100f, interactionMask))
 			{
-				Interacao interactable = hit.collider.GetComponent<Interacao>();
-				if (interactable != null)
-				{
-					SetFocus(interactable);
-				}
+				SetFocus(hit.collider.GetComponent<Interacao>());
 			}
 		}
+
 	}
 
 	// Set our focus to a new focus
 	void SetFocus(Interacao newFocus)
 	{
-		// If our focus has changed
-		if (newFocus != focus)
-		{
-			// Defocus the old one
-			if (focus != null)
-				focus.OnDefocused();
+		if (onFocusChangedCallback != null)
+			onFocusChangedCallback.Invoke(newFocus);
 
-			focus = newFocus;   // Set our new focus
-			motor.FollowTarget(newFocus);   // Follow the new focus
+		// If our focus has changed
+		if (focus != newFocus && focus != null)
+		{
+			// Let our previous focus know that it's no longer being focused
+			focus.OnDefocused();
 		}
 
-		newFocus.OnFocused(transform);
-	}
+		// Set our focus to what we hit
+		// If it's not an interactable, simply set it to null
+		focus = newFocus;
 
-	// Remove our current focus
-	void RemoveFocus()
-	{
 		if (focus != null)
-			focus.OnDefocused();
+		{
+			// Let our focus know that it's being focused
+			focus.OnFocused(transform);
+		}
 
-		focus = null;
-		motor.StopFollowingTarget();
 	}
 }
