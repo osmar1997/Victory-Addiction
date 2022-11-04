@@ -14,7 +14,7 @@ public class Interacao : MonoBehaviour
 	public Transform interactionTransform;  // A transformação de onde interagimos caso você queira compensar
 
 	bool isFocus = false;   // Este interativo está sendo focado no momento?
-	Transform player;      // Referência à transformação do jogador
+	public Transform player;      // Referência à transformação do jogador
 
 	bool hasInteracted = false; // Já interagimos com o objeto?
 
