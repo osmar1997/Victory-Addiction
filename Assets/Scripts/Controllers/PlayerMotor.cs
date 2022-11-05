@@ -35,13 +35,13 @@ public class PlayerMotor : MonoBehaviour
 	}
 
 	// Start following a target
-	public void FollowTarget(Interacao newTarget)
-	{
-		agent.stoppingDistance = newTarget.radius * .8f;
-		agent.updateRotation = false;
+	//public void FollowTarget(Interactable newTarget)
+	//{
+	//	agent.stoppingDistance = newTarget.radius * .8f;
+	//	agent.updateRotation = false;
 
-		target = newTarget.interactionTransform;
-	}
+	//	target = newTarget.interactionTransform;
+	//}
 
 	// Stop following a target
 	public void StopFollowingTarget()
