@@ -8,10 +8,12 @@ public class Item : ScriptableObject
     public Sprite Icon;
     public string Name;
     public string Description;
+    public int value;
     public int ID { get; private set; }
-    
+
+ 
     public int Count { get {
-            return FindObjectOfType<FakeInventory>()._Inventory.FindAll(x => x.ID == this.ID).Count;
+            return FindObjectOfType<InventoryManager>()._Inventory.FindAll(x => x.ID == this.ID).Count;
         }
     }
     private void OnEnable() => ID = this.GetInstanceID();

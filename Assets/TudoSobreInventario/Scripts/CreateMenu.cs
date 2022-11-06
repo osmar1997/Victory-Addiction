@@ -5,15 +5,15 @@ using UnityEngine;
 public class CreateMenu : MonoBehaviour
 {
     public ItemReference _element;
-    private List<Item> _inventory;
+    public List<Item> _inventory;
     void Start()
     {
-        _inventory = new List<Item>();
-        _inventory= FindObjectOfType<FakeInventory>()._Inventory;
-        InstatntieteElements();
+        _inventory = InventoryManager.Instance._Inventory;
+        _inventory= FindObjectOfType<InventoryManager>()._Inventory;
+        InstantieteElements();
     }
 
-    private void InstatntieteElements()
+    public void InstantieteElements()
     {
         for(int i =0;i<_inventory.Count;i++)
         {
