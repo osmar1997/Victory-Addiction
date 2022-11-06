@@ -7,13 +7,17 @@ public class ThirdPersonMovement : MonoBehaviour
 {
     public CharacterController controller;
     public Transform cam;
+    private Animator anim;
 
     public float speed = 6f;
 
     public float turnSmoothTime = 0.1f;
 
     float turnSmoothVelocity;
-
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
     // Update is called once per frame
     void Update()
     {
@@ -32,6 +36,28 @@ public class ThirdPersonMovement : MonoBehaviour
         }
        
         if (EventSystem.current.IsPointerOverGameObject())
+        {
             return;
+        }
+            
+
+        if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.S))
+        {
+            anim.SetInteger("transition", 1);
+        }
+        if (Input.GetKeyUp(KeyCode.W)|| Input.GetKeyUp(KeyCode.D) || Input.GetKeyUp(KeyCode.A) || Input.GetKeyUp(KeyCode.S))
+        {
+            anim.SetInteger("transition", 0);
+        }
+
+        if (Input.GetKey(KeyCode.M) )
+        {
+            anim.SetInteger("transition", 2);
+        }
+        if (Input.GetKeyUp(KeyCode.M) )
+        {
+            anim.SetInteger("transition", 0);
+        }
+
     }
 }

@@ -10,10 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a4a3994b4e0309945aa9d4ccc052cad7, type: 3}
-  m_Name: Escudo10pontos
+  m_Name: Colete
   m_EditorClassIdentifier: 
-  Icon: {fileID: 21300000, guid: 5bfb766ff8d9482479248b2c48378889, type: 3}
-  Name: Escudo Pobre
-  Description: "Este escudo aumenta em 10 pontos de defesaa sua prote\xE7\xE3o contra
-    ataques"
-  value: 10
+  Icon: {fileID: 21300000, guid: 4ec5e8e694bc3334db32778bebfd01e7, type: 3}
+  Name: Colete
+  Description: Colete Que protege 5pontos
+  value: 5
