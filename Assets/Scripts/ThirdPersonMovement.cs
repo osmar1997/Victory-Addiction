@@ -58,6 +58,14 @@ public class ThirdPersonMovement : MonoBehaviour
         {
             anim.SetInteger("transition", 0);
         }
+        if (Input.GetKey(KeyCode.N))
+        {
+            anim.SetInteger("transition", 3);
+        }
+        if (Input.GetKeyUp(KeyCode.N))
+        {
+            anim.SetInteger("transition", 0);
+        }
 
     }
 }
