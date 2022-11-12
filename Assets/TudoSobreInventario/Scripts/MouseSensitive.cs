@@ -7,7 +7,7 @@ public class MouseSensitive : MonoBehaviour, IPointerClickHandler, IPointerEnter
 {
     public static event System.Action<string, string> MouseON;
     public static event System.Action MouseOFF;
-    public static event System.Action<Item> IsClicked;
+    public static event System.Action<Item1> IsClicked;
     private ItemReference reference;
     
     void Start()

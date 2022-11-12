@@ -8,7 +8,7 @@ public class InventoryManager : MonoBehaviour
     
     public static InventoryManager Instance;
     
-    public List<Item> _Inventory= new List<Item>();
+    public List<Item1> _Inventory= new List<Item1>();
     
     private void Awake()
     {
@@ -16,11 +16,12 @@ public class InventoryManager : MonoBehaviour
         _Inventory = _Inventory.OrderBy(i => i.Name).ToList();
         MouseSensitive.IsClicked += RemoveItem;
     }
+
     private void OnDestroy()
     {
         MouseSensitive.IsClicked -= RemoveItem;
     }
-    public void AddItem(Item item)
+    public void AddItem(Item1 item)
     {
         if (item != null)
         { 
@@ -28,7 +29,7 @@ public class InventoryManager : MonoBehaviour
            
         }
     }
-    public void RemoveItem(Item item)
+    public void RemoveItem(Item1 item)
     {
         if (item != null)
         {

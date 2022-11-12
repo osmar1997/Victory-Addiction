@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class CreateMenu : MonoBehaviour
 {
+    public static CreateMenu Instance;
     public ItemReference _element;
-    public List<Item> _inventory;
+    public List<Item1> _inventory;
     void Start()
     {
+        Instance = this;
         _inventory = InventoryManager.Instance._Inventory;
         _inventory= FindObjectOfType<InventoryManager>()._Inventory;
         InstantieteElements();
@@ -15,7 +17,8 @@ public class CreateMenu : MonoBehaviour
 
     public void InstantieteElements()
     {
-        for(int i =0;i<_inventory.Count;i++)
+        
+        for (int i =0;i<_inventory.Count;i++)
         {
             if (isRepeated(i)) { continue; }
             (Instantiate(_element, transform) as ItemReference).SetValues(_inventory[i]);

@@ -8,9 +8,9 @@ public class ItemReference : MonoBehaviour
     public Image Icon;
     public Text CountText;
 
-    public Item _Item { get; private set; }
+    public Item1 _Item { get; private set; }
 
-    public void SetValues(Item item)
+    public void SetValues(Item1 item)
     {
         _Item = item;
         Icon.sprite = item.Icon;
