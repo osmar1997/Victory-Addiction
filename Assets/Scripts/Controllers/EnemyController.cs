@@ -8,11 +8,12 @@ public class EnemyController : MonoBehaviour
 
     Transform target;
     NavMeshAgent agent;
+    private Animator anim;
 
-    
     // Start is called before the first frame update
     void Start()
     {
+        anim = GetComponent<Animator>();
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
     }
@@ -22,17 +23,23 @@ public class EnemyController : MonoBehaviour
     {
         float distance = Vector3.Distance(target.position, transform.position);
         
-        if(distance <= lookRadius)
+        if (distance <= lookRadius)
         {
             agent.SetDestination(target.position);
-            
-            if(distance <= agent.stoppingDistance)
+            anim.SetInteger("TransitionEnemy", 1);
+            if (distance <= agent.stoppingDistance)
             {
                 // Attack the target
                 FaceTarget();
+                
             }
         
         }
+        else
+        {
+            anim.SetInteger("TransitionEnemy", 0);
+        }
+        
     }
 
     void FaceTarget ()
