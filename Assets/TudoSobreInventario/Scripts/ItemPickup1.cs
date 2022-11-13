@@ -5,13 +5,10 @@ using UnityEngine;
 public class ItemPickup1 : MonoBehaviour
 {
     public Item1 Item;
-
+    public ItemReference _element;
     void Pickup()
     {
-        
-        InventoryManager.Instance.AddItem(Item);
-       //CreateMenu.Instance.InstantieteElements();
-        
+        InventoryManager.Instance.AddItem(Item);  
         Destroy(gameObject);
     }
 
