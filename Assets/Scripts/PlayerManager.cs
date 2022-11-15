@@ -14,6 +14,11 @@ public class PlayerManager : MonoBehaviour
     }
 
     #endregion
-
+    public GameOverScreen GameOverScreen;
     public GameObject player;
+
+    public void GameOver()
+    {
+        GameOverScreen.Setup();
+    }
 }

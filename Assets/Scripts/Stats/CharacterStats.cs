@@ -4,7 +4,7 @@ public class CharacterStats : MonoBehaviour
 {
     public int maxHealth = 100;
     public int currentHealth { get; private set; }
-    
+    public PlayerManager playerManager;
     public Stat damage;
     public Stat armor;
 
@@ -41,6 +41,8 @@ public class CharacterStats : MonoBehaviour
         if(currentHealth <= 0)
         {
             Die();
+
+            playerManager.GameOver();
             //enemie do death animation 
         }
     }
