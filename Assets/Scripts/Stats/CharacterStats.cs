@@ -31,7 +31,6 @@ public class CharacterStats : MonoBehaviour
     public void TakeDamage(int damage)
     {
         damage -= armor.GetValue();
-        damage = Mathf.Clamp(damage, 0, int.MaxValue);
         
         currentHealth -= damage;
         Debug.Log(transform.name + " takes " + damage + " damage.");
@@ -50,8 +49,10 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void Die()
     {
-        anim.SetInteger("transition", 4);
+        anim.SetTrigger("die");
         Debug.Log(transform.name + " died.");
+
+        GetComponent<EnemyController>().isAlive = false;
     }
 
 
