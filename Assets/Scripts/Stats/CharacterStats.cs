@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class CharacterStats : MonoBehaviour
 {
+    private Animator anim;
     public int maxHealth = 100;
     public int currentHealth { get; private set; }
     
@@ -12,10 +13,13 @@ public class CharacterStats : MonoBehaviour
 
     void Awake()
     {
-        
         currentHealth = maxHealth;
     }
 
+    void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.T))
@@ -41,14 +45,12 @@ public class CharacterStats : MonoBehaviour
         if(currentHealth <= 0)
         {
             Die();
-            //enemie do death animation 
         }
     }
 
     public virtual void Die()
     {
-        //Die in some way
-        //This method is meant to be overwritten
+        anim.SetInteger("transition", 4);
         Debug.Log(transform.name + " died.");
     }
 
