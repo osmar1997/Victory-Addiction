@@ -10,12 +10,16 @@ public class EnemyController : MonoBehaviour
     NavMeshAgent agent;
     private Animator anim;
 
+    public bool isAlive;
+
     // Start is called before the first frame update
     void Start()
     {
         anim = GetComponent<Animator>();
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
+
+        isAlive = true;
     }
 
     // Update is called once per frame
@@ -23,7 +27,7 @@ public class EnemyController : MonoBehaviour
     {
         float distance = Vector3.Distance(target.position, transform.position);
         
-        if (distance <= lookRadius)
+        if (distance <= lookRadius && !isAlive)
         {
             agent.SetDestination(target.position);
             anim.SetInteger("TransitionEnemy", 1);
@@ -54,5 +58,7 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
+
+  
 
 }

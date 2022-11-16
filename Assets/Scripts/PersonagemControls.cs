@@ -95,11 +95,11 @@ public class PersonagemControls : MonoBehaviour
             //Rodar Esq
             if (Input.GetKey(KeyCode.A))
             {
-                anim.SetInteger("Transition", 9);
+               anim.SetInteger("Transition", 9);
             }
             if (Input.GetKeyUp(KeyCode.A))
             {
-                anim.SetInteger("Transition", 0);
+               anim.SetInteger("Transition", 0);
             }
         }
 
