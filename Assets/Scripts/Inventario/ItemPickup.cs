@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class ItemPickup : MonoBehaviour
 {
-    public Item Item;
+    public Item item;
 
     void Pickup()
     {
-        InventoryManager1.Instance.Add(Item);
-        Destroy(gameObject);
+        if (CharacterStats.Instance.currentMoney >= item.money)
+        {
+            CharacterStats.Instance.currentMoney -= item.money;
+            InventoryManager1.Instance.Add(item);
+            Destroy(gameObject);
+        } 
     }
 
     private void OnMouseDown()

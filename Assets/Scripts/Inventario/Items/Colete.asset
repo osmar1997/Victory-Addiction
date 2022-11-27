@@ -16,3 +16,6 @@ MonoBehaviour:
   itemName: Colete
   value: 10
   icon: {fileID: 21300000, guid: ef419fce13384654bab5cbf27232d640, type: 3}
+  money: 10
+  lifeTime: 2
+  type: 0

@@ -16,3 +16,6 @@ MonoBehaviour:
   itemName: Capacete
   value: 15
   icon: {fileID: 21300000, guid: b80babc45dc354c4684066b6c19565ad, type: 3}
+  money: 10
+  lifeTime: 2
+  type: 0

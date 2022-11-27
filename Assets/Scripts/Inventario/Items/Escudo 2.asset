@@ -9,9 +9,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 036519db98ea1b146bd155ca0304873e, type: 3}
-  m_Name: Item2
+  m_Script: {fileID: 11500000, guid: 32abc00f9937f6c418e8b01faf035986, type: 3}
+  m_Name: Escudo 2
   m_EditorClassIdentifier: 
-  name: elemento2
-  icon: {fileID: 0}
-  isDefaultItem: 0
+  id: 5
+  itemName: Escudo 2
+  value: 30
+  icon: {fileID: 21300000, guid: 0d2df74cd40ea7b4cb686dda25352114, type: 3}
+  money: 50
+  lifeTime: 4
+  type: 0
