@@ -2304,6 +2304,7 @@ MonoBehaviour:
   armorAttack: 0
   numberOfWins: 0
   playerManager: {fileID: 1196605666}
+  charType: 0
 --- !u!114 &335305549
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5514,6 +5515,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 36.376
       objectReference: {fileID: 0}
+    - target: {fileID: 205347453563167082, guid: 771b39e4beda946478f95dcab672a263, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 771b39e4beda946478f95dcab672a263, type: 3}
 --- !u!1 &790338623
@@ -7832,6 +7837,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Personagem
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b5f86dd1681867d4392e7536d2846fc8, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b5f86dd1681867d4392e7536d2846fc8, type: 3}
 --- !u!1 &1107004030
@@ -8333,6 +8342,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 55daa90b4780f7a4bab9c44704020a83, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55daa90b4780f7a4bab9c44704020a83, type: 3}
 --- !u!1 &1167633403
@@ -8401,7 +8414,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1167633403}
-  m_LocalRotation: {x: 0.12404655, y: -0.000000017598946, z: 0.0000000022000808, w: 0.99227643}
+  m_LocalRotation: {x: 0.12404655, y: 0.000000017598948, z: -0.000000002200081, w: 0.99227643}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -8610,7 +8623,7 @@ GameObject:
   - component: {fileID: 1196605666}
   m_Layer: 0
   m_Name: GameManager
-  m_TagString: Untagged
+  m_TagString: GameManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9875,6 +9888,7 @@ MonoBehaviour:
   armorAttack: 0
   numberOfWins: 0
   playerManager: {fileID: 0}
+  charType: 0
 --- !u!1 &1362892207
 GameObject:
   m_ObjectHideFlags: 0
@@ -11812,6 +11826,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 468532, guid: 663fd3fcb0cd4fe4f8316a05b83dc575, type: 3}
   m_PrefabInstance: {fileID: 1676881612}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1733036821 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1759201431329280, guid: 771b39e4beda946478f95dcab672a263, type: 3}
+  m_PrefabInstance: {fileID: 772169159}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1733036824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733036821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1892ed81d4e66c041ac4847f28a04f2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 50
+--- !u!65 &1733036825
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733036821}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.37, y: 4.8, z: 0.51}
+  m_Center: {x: 0, y: 2.22, z: 0}
+--- !u!54 &1733036826
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1733036821}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1737604027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13455,9 +13516,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.5
-  m_Height: 1
+  m_Height: 1.86
   m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!54 &1974041702
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13487,7 +13548,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lookRadius: 10
-  isAlive: 0
+  isAlive: 1
 --- !u!95 &1974041704
 Animator:
   serializedVersion: 3
@@ -13520,7 +13581,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHealth: 100
-  money: 100
+  money: 1000
   moneyText: {fileID: 0}
   xp: 1
   xpText: {fileID: 0}
@@ -13530,6 +13591,7 @@ MonoBehaviour:
   armorAttack: 0
   numberOfWins: 0
   playerManager: {fileID: 1196605666}
+  charType: 1
 --- !u!1 &1991582475
 GameObject:
   m_ObjectHideFlags: 0
@@ -13653,6 +13715,7 @@ MonoBehaviour:
   armorAttack: 0
   numberOfWins: 0
   playerManager: {fileID: 0}
+  charType: 0
 --- !u!1001 &2045554320
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14360,7 +14423,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2107127751}
-  m_LocalRotation: {x: 0.15056148, y: -0.000000017010231, z: 0.0000000025906168, w: 0.9886007}
+  m_LocalRotation: {x: 0.1505615, y: 0.00000001701025, z: -0.0000000025906197, w: 0.9886007}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:

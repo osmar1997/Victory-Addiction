@@ -18,7 +18,6 @@ public class EnemyController : MonoBehaviour
         anim = GetComponent<Animator>();
         target = PlayerManager.instance.player.transform;
         agent = GetComponent<NavMeshAgent>();
-
         isAlive = true;
     }
 
@@ -26,8 +25,8 @@ public class EnemyController : MonoBehaviour
     void Update()
     {
         float distance = Vector3.Distance(target.position, transform.position);
-        
-        if (distance <= lookRadius && !isAlive)
+
+        if (distance <= lookRadius && isAlive)
         {
             agent.SetDestination(target.position);
             anim.SetInteger("TransitionEnemy", 1);
@@ -35,18 +34,17 @@ public class EnemyController : MonoBehaviour
             {
                 // Attack the target
                 FaceTarget();
-                
             }
-        
+
         }
         else
         {
             anim.SetInteger("TransitionEnemy", 0);
         }
-        
+
     }
 
-    void FaceTarget ()
+    void FaceTarget()
     {
         Vector3 direction = (target.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0, direction.z));
@@ -59,6 +57,6 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
 
-  
+
 
 }

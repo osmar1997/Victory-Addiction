@@ -24,8 +24,13 @@ public class CharacterStats : MonoBehaviour
     public static CharacterStats Instance;
 
     public event System.Action<int, int> OnHealthChanged;
+
+    [SerializeField] enum CharType { player, enemy };
+    [SerializeField] CharType charType;
+
     void Awake()
     {
+        playerManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerManager>();
         Instance = this;
         currentMoney = money;
         currentHealth = maxHealth;
@@ -45,7 +50,6 @@ public class CharacterStats : MonoBehaviour
         {
             Win();
         }
-        Debug.Log(currentMoney);
     }
 
     public void TakeDamage(int damage)
@@ -64,8 +68,13 @@ public class CharacterStats : MonoBehaviour
         if(currentHealth <= 0)
         {
             Die();
-            playerManager.GameOver();
-            //enemie do death animation 
+            if (charType == CharType.enemy)
+            {
+                Win(); 
+            }
+            if (charType == CharType.player) { 
+               // playerManager.GameOver();
+            }
         }
     }
 
@@ -125,6 +134,15 @@ public class CharacterStats : MonoBehaviour
         //Die in some way
         //This method is meant to be overwritten
         Debug.Log(transform.name + " died.");
+
+        if (charType == CharType.player) {
+            playerManager.GameOver();
+        }
+        else {
+            GetComponent<Animator>().SetTrigger("die");
+            GetComponent<EnemyController>().isAlive = false;
+            Destroy(gameObject, 4);
+        }
     }
-    
+
 }

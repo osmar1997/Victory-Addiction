@@ -6,11 +6,25 @@ public class Weapon : MonoBehaviour
 {
     [SerializeField] private int damage;
 
+    private bool resetSword;
+
+
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.CompareTag("Enemy"))
+        if (other.CompareTag("Enemy") && !resetSword)
         {
+            print("fdgfg");
             other.GetComponent<CharacterStats>().TakeDamage(damage);
+            resetSword = true;
+            StartCoroutine(ResetSword());
         }
+    }
+
+    IEnumerator ResetSword()
+    {
+        yield return new WaitForSeconds(1);
+
+        resetSword = false;
     }
 }
