@@ -9,10 +9,12 @@ public class CharacterStats : MonoBehaviour
     public Stat armor;
 
     public event System.Action<int, int> OnHealthChanged;
+    [SerializeField] enum CharType { player, enemy };
+    [SerializeField] CharType charType;
 
     void Awake()
     {
-        
+        playerManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerManager>();
         currentHealth = maxHealth;
     }
 
@@ -42,7 +44,8 @@ public class CharacterStats : MonoBehaviour
         {
             Die();
 
-            playerManager.GameOver();
+            if(charType == CharType.player)
+                playerManager.GameOver();
             //enemie do death animation 
         }
     }
@@ -52,6 +55,17 @@ public class CharacterStats : MonoBehaviour
         //Die in some way
         //This method is meant to be overwritten
         Debug.Log(transform.name + " died.");
+
+        if (charType == CharType.player)
+        {
+
+        }
+        else
+        {
+            GetComponent<Animator>().SetTrigger("die");
+            GetComponent<EnemyController>().isAlive = false;
+            Destroy(gameObject, 4);
+        }
     }
 
 

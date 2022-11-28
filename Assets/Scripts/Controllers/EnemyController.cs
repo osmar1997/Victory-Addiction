@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
-    public float lookRadius = 10f;
+    public float lookRadius = 20f;
 
     Transform target;
     NavMeshAgent agent;
@@ -27,7 +27,7 @@ public class EnemyController : MonoBehaviour
     {
         float distance = Vector3.Distance(target.position, transform.position);
         
-        if (distance <= lookRadius && !isAlive)
+        if (distance <= lookRadius && isAlive)
         {
             agent.SetDestination(target.position);
             anim.SetInteger("TransitionEnemy", 1);
