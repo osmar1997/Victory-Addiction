@@ -1,26 +1,28 @@
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class CharacterStats : MonoBehaviour
 {
-    public int maxHealth = 100;
+    private int maxHealth = 100;
     public int currentHealth { get; private set; }
-    public int money = 1000;
+    private int money = 1000;
     public int currentMoney { get; set; }
     public Text moneyText;
-    public int xp = 1;
-    public int currentXp { get; set; }
+    private int xp = 1;
+    private int currentXp { get; set; }
     public Text xpText;
-    public int levelUp = 10;
-    public int damage = 10;
-    public int armorDefense = 0;
+    private int levelUp = 10;
+    private int damage = 10;
+    private int armorDefense = 0;
     public int currentArmorDefense { get; set; }
-    public int armorAttack = 0;
-    public int currentArmorAttack { get; set; }
-    public int numberOfWins = 0;
-    public int currentNumberOfWins { get; set; }
+    private int armorAttack = 0;
+    private int currentArmorAttack { get; set; }
+    private int numberOfWins = 0;
+    private int currentNumberOfWins { get; set; }
     public PlayerManager playerManager;
-   
+    
     public static CharacterStats Instance;
 
     public event System.Action<int, int> OnHealthChanged;
@@ -42,14 +44,9 @@ public class CharacterStats : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            TakeDamage(damage);
-        }
-        if (Input.GetKeyDown(KeyCode.Z))
-        {
-            Win();
-        }
+
+        UpdateMoneyScreen();
+        UpdateXpScreen();
     }
 
     public void TakeDamage(int damage)
@@ -68,13 +65,7 @@ public class CharacterStats : MonoBehaviour
         if(currentHealth <= 0)
         {
             Die();
-            if (charType == CharType.enemy)
-            {
-                Win(); 
-            }
-            if (charType == CharType.player) { 
-               // playerManager.GameOver();
-            }
+            Win();
         }
     }
 
@@ -97,17 +88,20 @@ public class CharacterStats : MonoBehaviour
     {
         if(currentXp <= 2)
         {
-            currentMoney += 200;
+            Debug.Log("1");
+            Instance.currentMoney += 200;
             ChangeWins();
         }
         else if(currentXp > 2 && currentXp <= 4)
         {
-            currentMoney += 500;
+            Debug.Log("2");
+            Instance.currentMoney += 500;
             ChangeWins();
         }
         else
         {
-            currentMoney += 1000;
+            Debug.Log("3");
+            Instance.currentMoney += 1000;
             ChangeWins();
         }
     }
@@ -116,10 +110,10 @@ public class CharacterStats : MonoBehaviour
     {
         if (currentNumberOfWins == levelUp)
         {
-            levelUp += 5;
-            currentXp++;
-            currentNumberOfWins++;
-            UpdateMoneyScreen();
+            Instance.levelUp += 5;
+            Instance.currentXp++;
+            Instance.currentNumberOfWins++;
+            UpdateMoneyScreen();    
             UpdateXpScreen();
         }
         if (currentNumberOfWins < levelUp)

@@ -11,6 +11,8 @@ TagManager:
   - EnemySpawn
   - Interact
   - GameManager
+  - Point
+  - Porta Arena
   layers:
   - Default
   - TransparentFX

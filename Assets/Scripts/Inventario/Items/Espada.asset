@@ -16,6 +16,6 @@ MonoBehaviour:
   itemName: Espada
   value: 20
   icon: {fileID: 21300000, guid: 5bfb766ff8d9482479248b2c48378889, type: 3}
-  money: 10
+  money: 1200
   lifeTime: 2
   type: 1
