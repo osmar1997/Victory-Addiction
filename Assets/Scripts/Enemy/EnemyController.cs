@@ -10,7 +10,7 @@ public class EnemyController : MonoBehaviour
     NavMeshAgent agent;
     private Animator anim;
     public bool isAlive;
-
+    public GameObject armcollider;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +43,16 @@ public class EnemyController : MonoBehaviour
             anim.SetInteger("TransitionEnemy", 0);
         }
 
+    }
+
+    public void EnableArm()
+    {
+        armcollider.GetComponent<BoxCollider>().enabled = true;
+    }
+
+    public void DisableArm()
+    {
+        armcollider.GetComponent<BoxCollider>().enabled = false;
     }
 
     void FaceTarget()

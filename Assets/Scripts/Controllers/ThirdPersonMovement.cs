@@ -13,11 +13,21 @@ public class ThirdPersonMovement : MonoBehaviour
     private float jumpHeight = 1.0f;
     private float gravityValue = -9.81f;
     float turnSmoothVelocity;
+    public GameObject sword;
     void Start()
     {
         anim = GetComponent<Animator>();
     }
     // Update is called once per frame
+    public void EnableSword()
+    {
+        sword.GetComponent<BoxCollider>().enabled = true;
+    }
+
+    public void DisableSword()
+    {
+        sword.GetComponent<BoxCollider>().enabled = false;
+    }
 
     void Update()
     {
