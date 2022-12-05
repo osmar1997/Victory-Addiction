@@ -125,11 +125,13 @@ public class CharacterStats : MonoBehaviour
 
     public virtual void Die()
     {
-        //Die in some way
-        //This method is meant to be overwritten
+        
         Debug.Log(transform.name + " died.");
 
         if (charType == CharType.player) {
+            //Esta linha seguinte nao dá porque o trabalho não está organizado
+            //Está a tentar ir buscar o Animator ao ThirdPersonPlayer e não tem
+            GetComponent<Animator>().SetTrigger("die");
             playerManager.GameOver();
         }
         else {
