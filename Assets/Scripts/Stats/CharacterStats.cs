@@ -131,7 +131,7 @@ public class CharacterStats : MonoBehaviour
         if (charType == CharType.player) {
             //Esta linha seguinte nao dá porque o trabalho não está organizado
             //Está a tentar ir buscar o Animator ao ThirdPersonPlayer e não tem
-            GetComponent<Animator>().SetTrigger("die");
+            //GetComponent<Animator>().SetTrigger("die");
             playerManager.GameOver();
         }
         else {
