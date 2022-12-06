@@ -24,7 +24,7 @@ public class CharacterStats : MonoBehaviour
     public PlayerManager playerManager;
     public GameObject closeDoorAfter;
     public GameObject AnimeObject;
-
+    SpriteRenderer spriteRenderer;
     public static CharacterStats Instance;
 
     public event System.Action<int, int> OnHealthChanged;
@@ -73,17 +73,17 @@ public class CharacterStats : MonoBehaviour
 
     public void SetMoney(Item item)
     {
-        currentMoney -= item.money;
+        Instance.currentMoney -= item.money;
     }
 
     public void UpdateMoneyScreen()
     {
-        moneyText.text = currentMoney.ToString();
+        Instance.moneyText.text = currentMoney.ToString();
     }
 
     public void UpdateXpScreen()
     {
-        xpText.text = currentXp.ToString();
+        Instance.xpText.text = currentXp.ToString();
     }
 
     public void Win()

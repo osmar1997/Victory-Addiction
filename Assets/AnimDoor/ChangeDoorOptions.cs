@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChangeDoorOptions : MonoBehaviour
 {
@@ -10,6 +11,12 @@ public class ChangeDoorOptions : MonoBehaviour
     public GameObject ThisTriggerOpenDoor;
     public AudioSource DoorCloseSound;
     public bool Action = false;
+    private UnityEngine.Object enemyRef;
+    void Start()
+    {
+        enemyRef = Resources.Load("Enemy");
+
+    }
 
     void OnTriggerEnter(Collider collision)
     {
@@ -33,7 +40,14 @@ public class ChangeDoorOptions : MonoBehaviour
             ThisTrigger.SetActive(false);
             Action = false;
             DoorCloseSound.Play();
+            RespawnEnemy();
         }
+    }
+    void RespawnEnemy()
+    {
+        GameObject enemyClone = (GameObject)Instantiate(enemyRef);
+        enemyClone.transform.position = transform.position;
+
     }
 }
 
