@@ -22,7 +22,9 @@ public class CharacterStats : MonoBehaviour
     private int numberOfWins = 0;
     private int currentNumberOfWins { get; set; }
     public PlayerManager playerManager;
-    
+    public GameObject closeDoorAfter;
+    public GameObject AnimeObject;
+
     public static CharacterStats Instance;
 
     public event System.Action<int, int> OnHealthChanged;
@@ -88,19 +90,16 @@ public class CharacterStats : MonoBehaviour
     {
         if(currentXp <= 2)
         {
-            Debug.Log("1");
             Instance.currentMoney += 200;
             ChangeWins();
         }
         else if(currentXp > 2 && currentXp <= 4)
         {
-            Debug.Log("2");
             Instance.currentMoney += 500;
             ChangeWins();
         }
         else
         {
-            Debug.Log("3");
             Instance.currentMoney += 1000;
             ChangeWins();
         }
@@ -138,7 +137,8 @@ public class CharacterStats : MonoBehaviour
             GetComponent<Animator>().SetTrigger("die");
             GetComponent<EnemyController>().isAlive = false;
             Destroy(gameObject, 4);
+            AnimeObject.GetComponent<Animator>().Play("DoorOpen");
+            closeDoorAfter.SetActive(true);
         }
     }
-
 }
