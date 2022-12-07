@@ -8,13 +8,10 @@ public class Weapon : MonoBehaviour
 
     private bool resetSword;
 
-
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Enemy") && !resetSword)
         {
-            print("fdgfg");
             other.GetComponent<CharacterStats>().TakeDamage(damage);
             resetSword = true;
             StartCoroutine(ResetSword());
@@ -24,7 +21,6 @@ public class Weapon : MonoBehaviour
     IEnumerator ResetSword()
     {
         yield return new WaitForSeconds(1);
-
         resetSword = false;
     }
 }

@@ -10,8 +10,8 @@ public class CharacterStats : MonoBehaviour
     private int money = 1000;
     public int currentMoney { get; set; }
     public Text moneyText;
-    private int xp = 1;
-    private int currentXp { get; set; }
+    private int xp = 2;
+    public int currentXp { get; set; }
     public Text xpText;
     private int levelUp = 10;
     private int damage = 10;
@@ -23,8 +23,13 @@ public class CharacterStats : MonoBehaviour
     private int currentNumberOfWins { get; set; }
     public PlayerManager playerManager;
     public GameObject closeDoorAfter;
+    public GameObject closeDoorAfter2;
     public GameObject AnimeObject;
+    public GameObject AnimeObject2;
     SpriteRenderer spriteRenderer;
+    public int currentArena { get; set; }
+    public int arena = 0;
+    
     public static CharacterStats Instance;
 
     public event System.Action<int, int> OnHealthChanged;
@@ -42,11 +47,11 @@ public class CharacterStats : MonoBehaviour
         currentNumberOfWins = numberOfWins;
         currentArmorAttack = armorAttack;
         currentArmorDefense = armorDefense;
+        currentArena = arena;
     }
 
     void Update()
     {
-
         UpdateMoneyScreen();
         UpdateXpScreen();
     }
@@ -137,8 +142,19 @@ public class CharacterStats : MonoBehaviour
             GetComponent<Animator>().SetTrigger("die");
             GetComponent<EnemyController>().isAlive = false;
             Destroy(gameObject, 4);
-            AnimeObject.GetComponent<Animator>().Play("DoorOpen");
-            closeDoorAfter.SetActive(true);
+            
+            if (Instance.currentArena == 1)
+            {
+                AnimeObject.GetComponent<Animator>().Play("DoorOpen");
+                closeDoorAfter.SetActive(true);
+            }
+            
+            if (Instance.currentArena == 2)
+            {
+                AnimeObject2.GetComponent<Animator>().Play("OpenDoor2");
+                closeDoorAfter2.SetActive(true);
+            }
+            
         }
     }
 }

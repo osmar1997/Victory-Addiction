@@ -11,10 +11,10 @@ public class ChangeDoorOptions : MonoBehaviour
     public GameObject ThisTriggerOpenDoor;
     public AudioSource DoorCloseSound;
     public bool Action = false;
-    private UnityEngine.Object enemyRef;
+    private GameObject enemyRef;
     void Start()
     {
-        enemyRef = Resources.Load("Enemy");
+        enemyRef = Resources.Load<GameObject>("Enemy");
 
     }
 
@@ -34,13 +34,22 @@ public class ChangeDoorOptions : MonoBehaviour
     {
         if (Action == true)
         {
-            AnimeObject.GetComponent<Animator>().Play("CloseDoor");
+            if(CharacterStats.Instance.currentArena == 2)
+            {
+                Debug.Log("j");
+                AnimeObject.GetComponent<Animator>().Play("CloseDoor2");
+            }
+            if (CharacterStats.Instance.currentArena == 1)
+            {
+                AnimeObject.GetComponent<Animator>().Play("CloseDoor");
+            }
+            
             ThisTriggerOpenDoor.SetActive(true);
             ThisTriggerCloseDoor.SetActive(true);
             ThisTrigger.SetActive(false);
             Action = false;
             DoorCloseSound.Play();
-            RespawnEnemy();
+            //RespawnEnemy();
         }
     }
     void RespawnEnemy()
