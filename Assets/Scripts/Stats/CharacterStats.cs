@@ -10,7 +10,7 @@ public class CharacterStats : MonoBehaviour
     private int money = 1000;
     public int currentMoney { get; set; }
     public Text moneyText;
-    private int xp = 2;
+    private int xp = 1;
     public int currentXp { get; set; }
     public Text xpText;
     private int levelUp = 10;
@@ -24,6 +24,7 @@ public class CharacterStats : MonoBehaviour
     public PlayerManager playerManager;
     public GameObject closeDoorAfter;
     public GameObject closeDoorAfter2;
+    public GameObject closeDoorAfter3;
     public GameObject AnimeObject;
     public GameObject AnimeObject2;
     SpriteRenderer spriteRenderer;
@@ -98,9 +99,9 @@ public class CharacterStats : MonoBehaviour
             Instance.currentMoney += 200;
             ChangeWins();
         }
-        else if(currentXp > 2 && currentXp <= 4)
+        else if(currentXp > 2 && currentXp <= 8)
         {
-            Instance.currentMoney += 500;
+            Instance.currentMoney += 700;
             ChangeWins();
         }
         else
@@ -114,7 +115,7 @@ public class CharacterStats : MonoBehaviour
     {
         if (currentNumberOfWins == levelUp)
         {
-            Instance.levelUp += 5;
+            Instance.levelUp += 3;
             Instance.currentXp++;
             Instance.currentNumberOfWins++;
             UpdateMoneyScreen();    
@@ -154,7 +155,12 @@ public class CharacterStats : MonoBehaviour
                 AnimeObject2.GetComponent<Animator>().Play("OpenDoor2");
                 closeDoorAfter2.SetActive(true);
             }
-            
+            if (Instance.currentArena == 3)
+            {
+                AnimeObject2.GetComponent<Animator>().Play("OpenDoor3");
+                closeDoorAfter3.SetActive(true);
+            }
+
         }
     }
 }

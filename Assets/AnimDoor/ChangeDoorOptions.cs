@@ -36,14 +36,19 @@ public class ChangeDoorOptions : MonoBehaviour
         {
             if(CharacterStats.Instance.currentArena == 2)
             {
-                Debug.Log("j");
+                Debug.Log("Arena2");
                 AnimeObject.GetComponent<Animator>().Play("CloseDoor2");
             }
             if (CharacterStats.Instance.currentArena == 1)
             {
+                Debug.Log("Arena1");
                 AnimeObject.GetComponent<Animator>().Play("CloseDoor");
             }
-            
+            if (CharacterStats.Instance.currentArena == 3)
+            {
+                Debug.Log("Arena3");
+                AnimeObject.GetComponent<Animator>().Play("CloseDoor3");
+            }
             ThisTriggerOpenDoor.SetActive(true);
             ThisTriggerCloseDoor.SetActive(true);
             ThisTrigger.SetActive(false);
