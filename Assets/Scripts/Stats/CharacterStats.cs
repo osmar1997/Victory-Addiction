@@ -10,7 +10,7 @@ public class CharacterStats : MonoBehaviour
     private int money = 1000;
     public int currentMoney { get; set; }
     public Text moneyText;
-    private int xp = 1;
+    private int xp = 9;
     public int currentXp { get; set; }
     public Text xpText;
     private int levelUp = 10;
