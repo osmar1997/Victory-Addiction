@@ -4,13 +4,16 @@ using UnityEngine;
 using UnityEngine.AI;
 public class EnemyController : MonoBehaviour
 {
-    public float lookRadius = 10f;
+    public float lookRadius = 20f;
 
     Transform target;
     NavMeshAgent agent;
     private Animator anim;
     public bool isAlive;
     public GameObject armcollider;
+
+    private bool attack;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,9 +36,17 @@ public class EnemyController : MonoBehaviour
 
             if (distance <= (agent.stoppingDistance = 2f))
             {
-                anim.SetInteger("TransitionEnemy", 2);
+                //im.SetInteger("TransitionEnemy", 2);
+                if(!attack)
+                {
+                    attack = true;
+                    StartCoroutine(AttackSeq());
+                }
+
                 // Attack the target
                 FaceTarget();
+
+                GetComponent<Patrolling>().patroling = false;
             }
 
         }
@@ -44,6 +55,16 @@ public class EnemyController : MonoBehaviour
             anim.SetInteger("TransitionEnemy", 0);
         }
 
+    }
+
+    IEnumerator AttackSeq()
+    {
+        print("aqui");
+        anim.SetTrigger("attack");
+
+        yield return new WaitForSeconds(2);
+
+        attack = false;
     }
 
     public void EnableArm()
@@ -69,7 +90,6 @@ public class EnemyController : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
-
 
 
 }

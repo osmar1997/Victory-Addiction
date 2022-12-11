@@ -37,7 +37,7 @@ public class Patrolling : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
-      foreach(var p in points)
+        foreach(var p in points)
         {
             Gizmos.DrawSphere(p, 1);
         }

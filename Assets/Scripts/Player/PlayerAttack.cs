@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(PlayerMovement))]
-public class PlayerAttack : MonoBehaviour
+public class PlayerAttack : AICharacterController
 {
     [SerializeField]
     private PlayerMovement _playerMovement;
     public GameObject Sword;
 
-    [SerializeField]
-    private Animator _anim;
-    
+    private bool attack;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        DisableSword();
     }
     public void EnableSword()
     {
@@ -32,20 +31,31 @@ public class PlayerAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (_playerMovement.enabled == true)
+     
+      
+        Ray ray = GetComponent<PlayerController>().camera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hitPoint;
+        if (Physics.Raycast(ray, out hitPoint))
         {
-            if (_playerMovement.IsMoving == false)
+            print(hitPoint.transform.gameObject.tag);
+            if (hitPoint.transform.gameObject.CompareTag("Enemy"))
             {
-                if (Input.GetKey(KeyCode.N))
+                if (!attack)
                 {
-                    _anim.SetInteger("transition", 3);
+                    attack = true;
+                    StartCoroutine(AttackSeq());
                 }
 
-                if (Input.GetKeyUp(KeyCode.N))
-                {
-                    _anim.SetInteger("transition", 0);
-                }
             }
         }
+    }
+    IEnumerator AttackSeq()
+    {
+        print("esteeeee");
+        SetAnimationState("attack");
+
+        yield return new WaitForSeconds(2);
+
+        attack = false;
     }
 }

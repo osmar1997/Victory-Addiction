@@ -910,6 +910,7 @@ GameObject:
   - component: {fileID: 7566322195802139634}
   - component: {fileID: 7566322195802139644}
   - component: {fileID: 7566322195802139647}
+  - component: {fileID: 597823251}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -926,7 +927,7 @@ Transform:
   m_GameObject: {fileID: 7332300148939435908}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 564.7, y: 0.034, z: 303}
-  m_LocalScale: {x: 1.2, y: 1.8, z: 1.2}
+  m_LocalScale: {x: 1.2000003, y: 1.8, z: 1.2000003}
   m_Children:
   - {fileID: 2511339821275420074}
   - {fileID: 8072234047168588088}
@@ -948,7 +949,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 4
   m_CollisionDetection: 0
 --- !u!136 &7566322195802139632
 CapsuleCollider:
@@ -1017,7 +1018,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8c1ad157f3459d4fa96dd0effd257f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookRadius: 20
+  lookRadius: 15
   isAlive: 1
   armcollider: {fileID: 1366831424731835690}
 --- !u!114 &7566322195802139644
@@ -1036,7 +1037,10 @@ MonoBehaviour:
   xpText: {fileID: 0}
   playerManager: {fileID: 0}
   closeDoorAfter: {fileID: 0}
+  closeDoorAfter2: {fileID: 0}
   AnimeObject: {fileID: 0}
+  AnimeObject2: {fileID: 0}
+  arena: 0
   charType: 1
 --- !u!114 &7566322195802139647
 MonoBehaviour:
@@ -1052,6 +1056,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uiPrefab: {fileID: 6235195154230129130, guid: 534da30e307d2344eb3941d61823aa22, type: 3}
   target: {fileID: 0}
+--- !u!114 &597823251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7332300148939435908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10157db3f0d8b214b95f5dd738cb6d5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  points:
+  - {x: 334.6, y: 1.41, z: 287.8}
+  - {x: 311.6, y: 0.06, z: 329.3}
+  - {x: 373.9, y: 0.06, z: 336.8}
+  MovingSpeed: 3
+  patroling: 1
+  anim: {fileID: 7566322195802139645}
 --- !u!1 &7351556219614907615
 GameObject:
   m_ObjectHideFlags: 0
