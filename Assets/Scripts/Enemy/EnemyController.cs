@@ -25,6 +25,7 @@ public class EnemyController : MonoBehaviour
     {
         float distance = Vector3.Distance(target.position, transform.position);
 
+     
         if (distance <= lookRadius && isAlive)
         {
             agent.SetDestination(target.position);
@@ -62,6 +63,7 @@ public class EnemyController : MonoBehaviour
         transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 5f);
     }
 
+    
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

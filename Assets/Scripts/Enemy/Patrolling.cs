@@ -22,6 +22,9 @@ public class Patrolling : MonoBehaviour
         {
             var targetposition = points[targetindex];
             transform.position = Vector3.MoveTowards(transform.position, targetposition, MovingSpeed*Time.deltaTime);
+            var direction = targetposition - transform.position;
+            direction.Normalize();
+            transform.forward = direction;
             if (Vector3.Distance(transform.position, targetposition) <= 0.1f) {
                 if (targetindex >= points.Count-1) {
                 targetindex = 0;
@@ -38,5 +41,10 @@ public class Patrolling : MonoBehaviour
         {
             Gizmos.DrawSphere(p, 1);
         }
+    }
+
+    public Vector3 currentPoint()
+    {
+        return points[targetindex];
     }
 }
