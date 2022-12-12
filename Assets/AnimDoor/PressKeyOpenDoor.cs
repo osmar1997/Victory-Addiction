@@ -11,6 +11,8 @@ public class PressKeyOpenDoor : MonoBehaviour
     public AudioSource DoorOpenSound;
     public bool Action = false;
 
+    [SerializeField] private GameObject doorObj;
+
     void Start()
     {
         Instruction.SetActive(false);
