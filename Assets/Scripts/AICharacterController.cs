@@ -116,7 +116,11 @@ public class AICharacterController : MonoBehaviour
         print(state);
         animator.SetInteger("transition", state);     
     }
-
+    public void ResetAnimationState2(string state)
+    {
+        print(state);
+        animator.ResetTrigger(state);
+    }
     public bool CheckAnimationEnded(string anim)
     {
         if (animator.GetCurrentAnimatorStateInfo(0).IsName(anim))

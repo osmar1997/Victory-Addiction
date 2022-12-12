@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2028307307503464804}
   - component: {fileID: 2028307307502390034}
   - component: {fileID: 2028307307506452876}
+  - component: {fileID: 7683123304314409259}
   m_Layer: 0
   m_Name: Wall_a_i
   m_TagString: Untagged
@@ -96,3 +97,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300000, guid: fe8e6982cc08ebb4981305e803ce8b2a, type: 3}
+--- !u!208 &7683123304314409259
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2028307307504576428}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 7.0000005, y: 3.7500002, z: 2.8750002}
+  m_MoveThreshold: 0.1
+  m_Carve: 1
+  m_CarveOnlyStationary: 1
+  m_Center: {x: -7.0000005, y: 3.7500002, z: 0}
+  m_TimeToStationary: 0.5

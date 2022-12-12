@@ -27,8 +27,9 @@ public class PlayerController : AICharacterController
                 //Tell ai script to move to this position
                 SetDestination(hitPoint.point);
 
-                SetAnimationState("walk");
+                ResetAnimationState2("idle");
 
+                SetAnimationState("walk");
                 currentPos = hitPoint.point;
             }
           
@@ -47,6 +48,5 @@ public class PlayerController : AICharacterController
 
             character.transform.rotation = Quaternion.Slerp(character.transform.rotation, targetRotation, 5 * Time.deltaTime);
         }
-
     }
 }

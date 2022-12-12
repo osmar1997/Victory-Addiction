@@ -62,7 +62,7 @@ public class EnemyController : MonoBehaviour
         print("aqui");
         anim.SetTrigger("attack");
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
 
         attack = false;
     }

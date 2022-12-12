@@ -9,7 +9,7 @@ public class PlayerAttack : AICharacterController
     private PlayerMovement _playerMovement;
     public GameObject Sword;
 
-    private bool attack;
+    [SerializeField] private bool attack;
 
     // Start is called before the first frame update
     void Start()
@@ -32,22 +32,24 @@ public class PlayerAttack : AICharacterController
     void Update()
     {
      
-      
-        Ray ray = GetComponent<PlayerController>().camera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hitPoint;
-        if (Physics.Raycast(ray, out hitPoint))
+        if(Input.GetMouseButtonDown(0))
         {
-            print(hitPoint.transform.gameObject.tag);
-            if (hitPoint.transform.gameObject.CompareTag("Enemy"))
+            Ray ray = GetComponent<PlayerController>().camera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit hitPoint;
+            if (Physics.Raycast(ray, out hitPoint))
             {
-                if (!attack)
+                if (hitPoint.transform.gameObject.CompareTag("Enemy"))
                 {
-                    attack = true;
-                    StartCoroutine(AttackSeq());
-                }
+                    if (!attack)
+                    {
+                        attack = true;
+                        StartCoroutine(AttackSeq());
+                    }
 
+                }
             }
         }
+       
     }
     IEnumerator AttackSeq()
     {
@@ -55,6 +57,7 @@ public class PlayerAttack : AICharacterController
         SetAnimationState("attack");
 
         yield return new WaitForSeconds(2);
+        SetAnimationState("idle");
 
         attack = false;
     }
