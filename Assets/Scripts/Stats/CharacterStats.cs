@@ -94,17 +94,17 @@ public class CharacterStats : MonoBehaviour
 
     public void Win()
     {
-        if(currentXp <= 2)
+        if (Instance.currentArena == 1)
         {
             Instance.currentMoney += 200;
             ChangeWins();
         }
-        else if(currentXp > 2 && currentXp <= 8)
+        else if (Instance.currentArena == 2)
         {
             Instance.currentMoney += 700;
             ChangeWins();
         }
-        else
+        else if(Instance.currentArena == 3)
         {
             Instance.currentMoney += 1000;
             ChangeWins();
