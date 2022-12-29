@@ -29,6 +29,8 @@ public class HeathUI : MonoBehaviour
                 break;
             }
         }
+        healthSlider = ui.GetChild(0).GetComponent<Image>();
+
         GetComponent<CharacterStats>().OnHealthChanged += OnHealthChanged;
     }
     void OnHealthChanged(int maxHealth, int currentHealth)

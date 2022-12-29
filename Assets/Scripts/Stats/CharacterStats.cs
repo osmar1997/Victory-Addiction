@@ -38,6 +38,8 @@ public class CharacterStats : MonoBehaviour
     [SerializeField] enum CharType { player, enemy };
     [SerializeField] CharType charType;
 
+
+
     void Awake()
     {
         playerManager = GameObject.FindGameObjectWithTag("GameManager").GetComponent<PlayerManager>();
@@ -62,7 +64,11 @@ public class CharacterStats : MonoBehaviour
         damage -= armorDefense;
         damage = Mathf.Clamp(damage, 0, int.MaxValue);
         
-        currentHealth -= damage;
+        if(charType == CharType.enemy && GetComponent<EnemyController>().isBoss)
+            currentHealth -= damage / 2;
+        else
+            currentHealth -= damage;
+
         Debug.Log(transform.name + " takes " + damage + " damage.");
 
         if(OnHealthChanged != null)
@@ -70,10 +76,20 @@ public class CharacterStats : MonoBehaviour
             OnHealthChanged(maxHealth, currentHealth);
         }
 
-        if(currentHealth <= 0)
+        if(currentHealth <= 0 && charType == CharType.player)
         {
             Die();
             Win();
+        }
+        else if(currentHealth <= 0 && charType == CharType.enemy && GetComponent<EnemyController>().isBoss && GetComponent<EnemyController>().hasRegenerated)
+        {
+            Die();
+            Win();
+        }
+        else if(currentHealth <= 10 && charType == CharType.enemy && GetComponent<EnemyController>().isBoss)
+        {
+            print("Regenerate");
+            BossRegeneration();
         }
     }
 
@@ -162,5 +178,13 @@ public class CharacterStats : MonoBehaviour
             }
 
         }
+    }
+
+
+    public void BossRegeneration()
+    {
+        GetComponent<EnemyController>().hasRegenerated = true;
+        currentHealth = maxHealth;
+        print(currentHealth);
     }
 }

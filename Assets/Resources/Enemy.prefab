@@ -911,6 +911,7 @@ GameObject:
   - component: {fileID: 7566322195802139644}
   - component: {fileID: 7566322195802139647}
   - component: {fileID: 597823251}
+  - component: {fileID: 7621033801013693979}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -1021,6 +1022,8 @@ MonoBehaviour:
   lookRadius: 15
   isAlive: 1
   armcollider: {fileID: 1366831424731835690}
+  isBoss: 0
+  hasRegenerated: 0
 --- !u!114 &7566322195802139644
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1038,6 +1041,7 @@ MonoBehaviour:
   playerManager: {fileID: 0}
   closeDoorAfter: {fileID: 0}
   closeDoorAfter2: {fileID: 0}
+  closeDoorAfter3: {fileID: 0}
   AnimeObject: {fileID: 0}
   AnimeObject2: {fileID: 0}
   arena: 0
@@ -1054,7 +1058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab96f613cab95a449b306ac861d16ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiPrefab: {fileID: 6235195154230129130, guid: 534da30e307d2344eb3941d61823aa22, type: 3}
+  uiPrefab: {fileID: 0}
   target: {fileID: 0}
 --- !u!114 &597823251
 MonoBehaviour:
@@ -1063,7 +1067,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7332300148939435908}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 10157db3f0d8b214b95f5dd738cb6d5b, type: 3}
   m_Name: 
@@ -1075,6 +1079,22 @@ MonoBehaviour:
   MovingSpeed: 3
   patroling: 1
   anim: {fileID: 7566322195802139645}
+--- !u!114 &7621033801013693979
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7332300148939435908}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3367ca708ac521f49bc3899b820443e6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cursorTexture: {fileID: 2800000, guid: 5026f3201e60f1b4e8d4f4bedba06bb9, type: 3}
+  cursorTextureRed: {fileID: 2800000, guid: c693114d61db7804e96e462f047f0ccd, type: 3}
+  hotSpot: {x: 0, y: 0}
+  cursorMode: 0
 --- !u!1 &7351556219614907615
 GameObject:
   m_ObjectHideFlags: 0

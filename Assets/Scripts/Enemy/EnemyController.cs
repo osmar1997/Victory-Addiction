@@ -14,6 +14,9 @@ public class EnemyController : MonoBehaviour
 
     private bool attack;
 
+    [SerializeField] public bool isBoss;
+    [SerializeField] public bool hasRegenerated;
+
     // Start is called before the first frame update
     void Start()
     {
