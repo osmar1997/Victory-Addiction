@@ -5,10 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(PlayerMovement))]
 public class PlayerAttack : AICharacterController
 {
+    
     [SerializeField]
     private PlayerMovement _playerMovement;
     public GameObject Sword;
-
+    public AudioSource attackSound;
     [SerializeField] private bool attack;
 
     // Start is called before the first frame update
@@ -44,6 +45,7 @@ public class PlayerAttack : AICharacterController
                     {
                         attack = true;
                         StartCoroutine(AttackSeq());
+                        attackSound.Play();
                     }
 
                 }
