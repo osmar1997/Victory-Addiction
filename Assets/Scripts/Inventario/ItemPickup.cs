@@ -5,6 +5,7 @@ using UnityEngine;
 public class ItemPickup : MonoBehaviour
 {
     public Item item;
+    public AudioSource itemSound;
 
     void Pickup()
     {
@@ -12,6 +13,7 @@ public class ItemPickup : MonoBehaviour
         {
             CharacterStats.Instance.currentMoney -= item.money;
             InventoryManager1.Instance.Add(item);
+            itemSound.Play();
             Destroy(gameObject);
         } 
     }
