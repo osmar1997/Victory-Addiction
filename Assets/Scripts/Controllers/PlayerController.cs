@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class PlayerController : AICharacterController
 {
@@ -9,13 +10,19 @@ public class PlayerController : AICharacterController
     [SerializeField] public Camera camera;
 
     private Vector3 currentPos;
-    void Start()
+
+    [SerializeField] private GameObject mount;
+    [SerializeField] private Animator mountAnim;
+
+    public bool isMounted;
+
+    private void Start()
     {
-        
+        //SwitchToMount(false);
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         if(Input.GetMouseButtonDown(0))
         {
@@ -40,6 +47,8 @@ public class PlayerController : AICharacterController
         if (distance <= 0.5f)
         {
             SetAnimationState("idle");
+
+
         }
         else
         {
@@ -47,6 +56,50 @@ public class PlayerController : AICharacterController
             var targetRotation = Quaternion.LookRotation(new Vector3(currentPos.x, 0, currentPos.z) - character.transform.position);
 
             character.transform.rotation = Quaternion.Slerp(character.transform.rotation, targetRotation, 5 * Time.deltaTime);
+
+            mount.transform.rotation = Quaternion.Slerp(character.transform.rotation, targetRotation, 5 * Time.deltaTime);
+
+
         }
+        if(distance > 0)
+        {
+            mountAnim.SetBool("walk", true);
+        }
+        if (distance < .1f)
+        {
+            mountAnim.SetBool("walk", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            SwitchToMount(false);
+        }
+
+    }
+
+    public void SwitchToMount(bool value)
+    {
+        mount.SetActive(value);
+        character.gameObject.SetActive(!value);
+
+        GameObject horseInteraction = GameObject.FindGameObjectWithTag("HorseInteraction");
+        horseInteraction.transform.position = transform.position;
+        horseInteraction.transform.rotation = mount.transform.rotation;
+        horseInteraction.GetComponentInChildren<SkinnedMeshRenderer>().enabled = !value;
+        if(value == true)
+            GetComponent<NavMeshAgent>().speed=6;
+        else
+        {
+            StartCoroutine(MountCountdown());
+            GetComponent<NavMeshAgent>().speed = 3;
+
+        }
+    }
+
+    IEnumerator MountCountdown()
+    {
+        yield return new WaitForSeconds(2);
+
+        isMounted = false;
     }
 }

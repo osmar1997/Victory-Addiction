@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class CharacterStats : MonoBehaviour
 {
     private int maxHealth = 100;
-    public int currentHealth { get; private set; }
+    
+    [SerializeField] public int currentHealth;
     private int money = 1000;
     public int currentMoney { get; set; }
     public Text moneyText;
@@ -81,7 +82,7 @@ public class CharacterStats : MonoBehaviour
             Die();
             Win();
         }
-        else if(currentHealth <= 0 && charType == CharType.enemy && GetComponent<EnemyController>().isBoss && GetComponent<EnemyController>().hasRegenerated)
+        else if(currentHealth <= 0 && charType == CharType.enemy && !GetComponent<EnemyController>().isBoss && !GetComponent<EnemyController>().hasRegenerated)
         {
             Die();
             Win();
@@ -90,6 +91,11 @@ public class CharacterStats : MonoBehaviour
         {
             print("Regenerate");
             BossRegeneration();
+        }
+        else if (currentHealth <= 10 && charType == CharType.enemy && GetComponent<EnemyController>().isBoss && GetComponent<EnemyController>().hasRegenerated)
+        {
+            Die();
+            Win();
         }
     }
 
