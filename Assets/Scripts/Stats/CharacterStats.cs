@@ -87,12 +87,12 @@ public class CharacterStats : MonoBehaviour
             Die();
             Win();
         }
-        else if(currentHealth <= 10 && charType == CharType.enemy && GetComponent<EnemyController>().isBoss)
+        else if(currentHealth <= 10 && charType == CharType.enemy && GetComponent<EnemyController>().isBoss && !GetComponent<EnemyController>().hasRegenerated)
         {
             print("Regenerate");
             BossRegeneration();
         }
-        else if (currentHealth <= 10 && charType == CharType.enemy && GetComponent<EnemyController>().isBoss && GetComponent<EnemyController>().hasRegenerated)
+        else if (currentHealth <= 0 && charType == CharType.enemy && GetComponent<EnemyController>().isBoss && GetComponent<EnemyController>().hasRegenerated)
         {
             Die();
             Win();
@@ -156,9 +156,6 @@ public class CharacterStats : MonoBehaviour
         Debug.Log(transform.name + " died.");
 
         if (charType == CharType.player) {
-            //Esta linha seguinte nao dá porque o trabalho não está organizado
-            //Está a tentar ir buscar o Animator ao ThirdPersonPlayer e não tem
-            //GetComponent<Animator>().SetTrigger("die");
             playerManager.GameOver();
         }
         else {
@@ -191,6 +188,5 @@ public class CharacterStats : MonoBehaviour
     {
         GetComponent<EnemyController>().hasRegenerated = true;
         currentHealth = maxHealth;
-        print(currentHealth);
     }
 }

@@ -24,7 +24,7 @@ public class MouseMovement : MonoBehaviour
     }
     void OnMouseExit()
     {
-        Cursor.SetCursor(null, Vector2.zero, cursorMode);
+        Cursor.SetCursor(cursorTexture, Vector2.zero, cursorMode);
     }
 
      void OnMouseOver()

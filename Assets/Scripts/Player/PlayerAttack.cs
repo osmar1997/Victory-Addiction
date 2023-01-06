@@ -55,7 +55,6 @@ public class PlayerAttack : AICharacterController
     }
     IEnumerator AttackSeq()
     {
-        print("esteeeee");
         SetAnimationState("attack");
 
         yield return new WaitForSeconds(2);
