@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class PlayerInteract : MonoBehaviour
 {
-
-
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+
+
+        IInteractable interactable = GetInteractableObject();
+        if (interactable != null)
         {
-            IInteractable interactable = GetInteractableObject();
-            if (interactable != null)
-            {
-                interactable.Interact(transform);
-            }
+            interactable.Interact(transform);
         }
+
     }
 
     public IInteractable GetInteractableObject()

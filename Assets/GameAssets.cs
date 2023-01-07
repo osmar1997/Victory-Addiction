@@ -17,6 +17,10 @@ public class GameAssets : MonoBehaviour
     }
 
 
+    private void Awake()
+    {
+        _i = this;
+    }
 
     public Transform pfChatBubble;
 

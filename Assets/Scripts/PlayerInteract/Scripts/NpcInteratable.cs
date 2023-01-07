@@ -4,26 +4,23 @@ using UnityEngine;
 
 public class NpcInteratable : MonoBehaviour, IInteractable
 {
-
     [SerializeField] private string interactText;
 
     private Animator animator;
-    
+   
 
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        
+
     }
 
     public void Interact(Transform interactorTransform)
     {
-        ChatBubble.Create(transform.transform, new Vector3(-.3f, 1.7f, 0f), ChatBubble.IconType.Happy, "Hello there!");
+        ChatBubble.Create(transform.transform, new Vector3(-.3f, 1.7f, 0f), ChatBubble.IconType.Happy, GetInteractText());
 
         //animator.SetTrigger("Talk");
 
-        float playerHeight = 1.7f;
-       
     }
 
     public string GetInteractText()
@@ -35,5 +32,4 @@ public class NpcInteratable : MonoBehaviour, IInteractable
     {
         return transform;
     }
-
 }
