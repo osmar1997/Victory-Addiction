@@ -38,7 +38,6 @@ public class PressKeyDoorOpen2 : MonoBehaviour
             {
                 if (Action == true)
                 {
-                    Debug.Log("fffff");
                     Instruction.SetActive(false);
                     AnimeObject.GetComponent<Animator>().Play("OpenDoor2");
                     ThisTrigger.SetActive(false);

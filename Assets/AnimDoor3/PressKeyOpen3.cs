@@ -34,11 +34,10 @@ public class PressKeyOpen3 : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.T))
         {
-            if (CharacterStats.Instance.currentMoney >= 1000 && CharacterStats.Instance.currentXp >= 8)
+            if (CharacterStats.Instance.currentMoney >= 1000 && CharacterStats.Instance.currentXp >= 3)
             {
                 if (Action == true)
                 {
-                    Debug.Log("33333333333");
                     Instruction.SetActive(false);
                     AnimeObject.GetComponent<Animator>().Play("OpenDoor3");
                     ThisTrigger.SetActive(false);

@@ -11,7 +11,7 @@ public class CharacterStats : MonoBehaviour
     private int money = 1000;
     public int currentMoney { get; set; }
     public Text moneyText;
-    private int xp = 9;
+    private int xp = 8;
     public int currentXp { get; set; }
     public Text xpText;
     private int levelUp = 10;
@@ -28,6 +28,7 @@ public class CharacterStats : MonoBehaviour
     public GameObject closeDoorAfter3;
     public GameObject AnimeObject;
     public GameObject AnimeObject2;
+    public GameObject AnimeObject3;
     SpriteRenderer spriteRenderer;
     public int currentArena { get; set; }
     public int arena = 0;
@@ -176,8 +177,12 @@ public class CharacterStats : MonoBehaviour
             }
             if (Instance.currentArena == 3)
             {
-                AnimeObject2.GetComponent<Animator>().Play("OpenDoor3");
+                AnimeObject3.GetComponent<Animator>().Play("OpenDoor3");
                 closeDoorAfter3.SetActive(true);
+            }
+            if (Instance.currentArena == 4)
+            {
+                //abrir menu win
             }
 
         }

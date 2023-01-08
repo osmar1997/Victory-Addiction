@@ -38,8 +38,7 @@ public class PressKeyOpenDoor : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E))
         {
-            if(CharacterStats.Instance.currentMoney >= 100)
-            {
+           
                 if (Action == true)
                 {
                     Instruction.SetActive(false);
@@ -47,12 +46,12 @@ public class PressKeyOpenDoor : MonoBehaviour
                     ThisTrigger.SetActive(false);
                     DoorOpenSound.Play();
                     Action = false;
-                    CharacterStats.Instance.currentMoney = CharacterStats.Instance.currentMoney - 100;
+                    CharacterStats.Instance.currentMoney = CharacterStats.Instance.currentMoney;
                 }
 
                 CharacterStats.Instance.currentArena = 1;
                 Debug.Log(CharacterStats.Instance.currentArena);
-            }
+            
            
         }
 
