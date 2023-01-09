@@ -269,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca738000776d4a647a5b8ef3ec2d83e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: Wins for us
+  interactText: Win for us
 --- !u!114 &2931898
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2811,7 +2811,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca738000776d4a647a5b8ef3ec2d83e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: Force!! Our heart is with you
+  interactText: Go get them!
 --- !u!95 &93732838
 Animator:
   serializedVersion: 3
@@ -4276,7 +4276,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca738000776d4a647a5b8ef3ec2d83e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: Force!! Our heart is with you
+  interactText: Be Brave! Our heart is with you
 --- !u!95 &139688522
 Animator:
   serializedVersion: 3
@@ -4800,7 +4800,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 156483591}
-  m_LocalRotation: {x: 0.51919156, y: -0.0000000147055665, z: 0.000000008933406, w: 0.85465795}
+  m_LocalRotation: {x: 0.51919156, y: 0.000000014705574, z: -0.000000008933411, w: 0.85465795}
   m_LocalPosition: {x: 501.5, y: 41.4, z: 226.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -16663,7 +16663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca738000776d4a647a5b8ef3ec2d83e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: Wins for us
+  interactText: Win for us
 --- !u!95 &638290598
 Animator:
   serializedVersion: 3
@@ -25678,7 +25678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca738000776d4a647a5b8ef3ec2d83e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: Force!! Our heart is with you
+  interactText: The monsters are killing our resources! You need to help us!
 --- !u!95 &1019056485
 Animator:
   serializedVersion: 3
@@ -29623,7 +29623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca738000776d4a647a5b8ef3ec2d83e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: Wins for us
+  interactText: Save us from the tyrans!
 --- !u!114 &1129869605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36066,7 +36066,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca738000776d4a647a5b8ef3ec2d83e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: Force!! Our heart is with you
+  interactText: The shop is here get stronger and you will defeat the big boss in
+    the final arena!
 --- !u!114 &1410205077
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44145,7 +44146,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1748832889}
-  m_LocalRotation: {x: 0.51919156, y: -0.0000000147055665, z: 0.000000008933406, w: 0.85465795}
+  m_LocalRotation: {x: 0.51919156, y: 0.000000014705574, z: -0.000000008933411, w: 0.85465795}
   m_LocalPosition: {x: 501.5, y: 41.4, z: 226.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -45062,7 +45063,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca738000776d4a647a5b8ef3ec2d83e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: Wins for us
+  interactText: Win for us
 --- !u!114 &1792072720
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47100,7 +47101,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca738000776d4a647a5b8ef3ec2d83e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  interactText: Wins for us
+  interactText: Win for us
 --- !u!114 &1870418975
 MonoBehaviour:
   m_ObjectHideFlags: 0
