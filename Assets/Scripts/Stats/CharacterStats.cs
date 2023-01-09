@@ -39,7 +39,7 @@ public class CharacterStats : MonoBehaviour
 
     [SerializeField] enum CharType { player, enemy };
     [SerializeField] CharType charType;
-
+    [SerializeField] private GameObject win;
 
 
     void Awake()
@@ -182,7 +182,8 @@ public class CharacterStats : MonoBehaviour
             }
             if (Instance.currentArena == 4)
             {
-                //abrir menu win
+                Time.timeScale = 0f;
+                win.gameObject.SetActive(true);
             }
 
         }
