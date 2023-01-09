@@ -55,13 +55,19 @@ public class PlayerController : AICharacterController
 
             var targetRotation = Quaternion.LookRotation(new Vector3(currentPos.x, 0, currentPos.z) - character.transform.position);
 
-            character.transform.rotation = Quaternion.Slerp(character.transform.rotation, targetRotation, 5 * Time.deltaTime);
+            //character.transform.rotation = Quaternion.Slerp(character.transform.rotation, targetRotation, 5 * Time.deltaTime);
 
-            mount.transform.rotation = Quaternion.Slerp(character.transform.rotation, targetRotation, 5 * Time.deltaTime);
+            //mount.transform.rotation = Quaternion.Slerp(character.transform.rotation, targetRotation, 5 * Time.deltaTime);
 
+            Vector3 worldLookDirection = currentPos - character.transform.position;
+            Vector3 localLookDirection = character.transform.InverseTransformDirection(worldLookDirection);
+            localLookDirection.y = 0;
+            character.transform.forward = character.transform.rotation * localLookDirection;
+
+            mount.transform.forward = character.transform.rotation * localLookDirection;
 
         }
-        if(distance > 0)
+        if (distance > 0)
         {
             mountAnim.SetBool("walk", true);
         }

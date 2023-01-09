@@ -39,6 +39,8 @@ public class InventoryManager1 : MonoBehaviour
             var itemIcon = obj.transform.Find("ItemIcon").GetComponent<Image>();
             var removeButton=obj.transform.Find("RemoveButton").GetComponent<Button>();
 
+            obj.GetComponent<Button>().onClick.AddListener(delegate () { this.CheckItemType(item, obj); });
+
             itemName.text = item.itemName;
             itemIcon.sprite = item.icon;
             
@@ -74,6 +76,35 @@ public class InventoryManager1 : MonoBehaviour
         {
             InventoryItems[i].AddItem(Items[i]);
         }
+    }
+
+    private void CheckItemType(Item item, GameObject objInventory)
+    {
+        
+        print(item.type);
+
+        if (item.type == 10)
+        {
+            GameManager.Instance.player.GetComponent<CharacterStats>().currentHealth = GameManager.Instance.player.GetComponent<CharacterStats>().maxHealth;
+            Items.Remove(item);
+            Destroy(objInventory);
+        }
+        //
+        //else if(item.type == 1) //espada
+        //{
+        //    GameManager.Instance.player.GetComponent<CharacterStats>(). = GameManager.Instance.player.GetComponent<CharacterStats>().maxHealth;
+        //    Items.Remove(item);
+        //    Destroy(objInventory);
+        //}
+        //else if (item.type == 1) //escudo
+        //{
+        //    GameManager.Instance.player.GetComponent<CharacterStats>(). = GameManager.Instance.player.GetComponent<CharacterStats>().maxHealth;
+        //    Items.Remove(item);
+        //    Destroy(objInventory);
+        //}
+
+
+
     }
 
 }

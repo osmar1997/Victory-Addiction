@@ -1,17 +1,12 @@
 fileFormatVersion: 2
-guid: 9304f1bdf39531644a850bcd2fd52843
+guid: fbd3dd95af2e1a1428961c1aeda1e9d6
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -3607359541125650467
-    second: Horse-Rig|Horse-Walk
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: Horse
-    second: {fileID: 2100000, guid: 12b1e30759e89ee4a8c59255482ca449, type: 2}
+      74: -203655887218126122
+    second: mixamo.com
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0

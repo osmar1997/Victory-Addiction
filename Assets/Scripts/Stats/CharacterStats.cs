@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CharacterStats : MonoBehaviour
 {
-    private int maxHealth = 100;
+    public int maxHealth = 100;
     
     [SerializeField] public int currentHealth;
     private int money = 1000;
@@ -73,11 +73,7 @@ public class CharacterStats : MonoBehaviour
 
         Debug.Log(transform.name + " takes " + damage + " damage.");
 
-        if(OnHealthChanged != null)
-        {
-            OnHealthChanged(maxHealth, currentHealth);
-        }
-
+ 
         if(currentHealth <= 0 && charType == CharType.player)
         {
             Die();
@@ -98,6 +94,11 @@ public class CharacterStats : MonoBehaviour
             Die();
             Win();
         }
+        if (OnHealthChanged != null)
+        {
+            OnHealthChanged(maxHealth, currentHealth);
+        }
+
     }
 
     public void SetMoney(Item item)
@@ -194,5 +195,8 @@ public class CharacterStats : MonoBehaviour
     {
         GetComponent<EnemyController>().hasRegenerated = true;
         currentHealth = maxHealth;
+
+        GetComponent<EnemyController>().InvokeMinions();
+
     }
 }

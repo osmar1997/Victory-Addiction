@@ -44,7 +44,7 @@ public class HeathUI : MonoBehaviour
             healthSlider.fillAmount = healthPercent;
             if (currentHealth <= 0)
             {
-                Destroy(ui.gameObject);
+                //Destroy(ui.gameObject);
             }
         }
     }

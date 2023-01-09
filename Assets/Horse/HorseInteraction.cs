@@ -12,7 +12,7 @@ public class HorseInteraction : MonoBehaviour
         {
             other.GetComponent<PlayerController>().SwitchToMount(true);
             itemSound.Play();
-            //soundWalk.Play();
+            soundWalk.Play();
 
             gameObject.GetComponentInChildren<SkinnedMeshRenderer>().enabled = false;
 

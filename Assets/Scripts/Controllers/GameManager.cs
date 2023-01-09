@@ -11,7 +11,11 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] public GameObject horse;
 
-
+    public static GameManager Instance;
+    private void Awake()
+    {
+        Instance = this;
+    }
     public void SwitchCameraTarget()
     {
         playerCamera.m_Follow = horse.transform;

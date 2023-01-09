@@ -17,6 +17,7 @@ public class EnemyController : MonoBehaviour
     [SerializeField] public bool isBoss;
     [SerializeField] public bool hasRegenerated;
 
+    [SerializeField] private GameObject bossMinion;
     // Start is called before the first frame update
     void Start()
     {
@@ -94,5 +95,22 @@ public class EnemyController : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, lookRadius);
     }
 
+    public void InvokeMinions()
+    {
+        StartCoroutine(InvokeMinionsSeq());
+    }
 
+    public IEnumerator InvokeMinionsSeq()
+    {
+        anim.SetTrigger("Roar");
+        isAlive = false;
+
+        yield return new WaitForSeconds(3);
+
+        isAlive = true;
+
+        Instantiate(bossMinion, new Vector3(transform.position.x - 4, transform.position.y, transform.position.z), Quaternion.identity);
+        Instantiate(bossMinion, new Vector3(transform.position.x + 4, transform.position.y, transform.position.z), Quaternion.identity);
+
+    }
 }
